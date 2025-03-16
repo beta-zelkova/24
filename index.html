@@ -76,8 +76,10 @@
             .then(response => response.json())
             .then(playerData => {
                 const tableBody = document.getElementById("stats-table");
+                tableBody.innerHTML = ""; // 既存のデータをクリア
                 playerData.forEach(player => {
-                    const row = `<tr>
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
                         <td>${player.打者}</td>
                         <td>${player.出場}</td>
                         <td>${player.打席}</td>
@@ -99,8 +101,8 @@
                         <td>${player.刺殺}</td>
                         <td>${player.補殺}</td>
                         <td>${player.守備率.toFixed(2)}</td>
-                    </tr>`;
-                    tableBody.innerHTML += row;
+                    `;
+                    tableBody.appendChild(row);
                 });
             })
             .catch(error => console.error("データの読み込みに失敗しました", error));
