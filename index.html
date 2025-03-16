@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024年 成績表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>2024年 成績表</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>打者</th>
+                    <th>出場</th>
+                    <th>打席</th>
+                    <th>打数</th>
+                    <th>安打</th>
+                    <th>四球</th>
+                    <th>死球</th>
+                    <th>盗塁</th>
+                    <th>打点</th>
+                    <th>得点</th>
+                </tr>
+            </thead>
+            <tbody id="stats-table">
+                <!-- データがここに追加される -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // JSONデータを外部ファイルから取得
+        fetch("data.json")
+            .then(response => response.json())
+            .then(playerData => {
+                const tableBody = document.getElementById("stats-table");
+                playerData.forEach(player => {
+                    const row = `<tr>
+                        <td>${player.打者}</td>
+                        <td>${player.出場}</td>
+                        <td>${player.打席}</td>
+                        <td>${player.打数}</td>
+                        <td>${player.安打}</td>
+                        <td>${player.四球}</td>
+                        <td>${player.死球}</td>
+                        <td>${player.盗塁}</td>
+                        <td>${player.打点}</td>
+                        <td>${player.得点}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            })
+            .catch(error => console.error("データの読み込みに失敗しました", error));
+    </script>
+</body>
+</html>
+
