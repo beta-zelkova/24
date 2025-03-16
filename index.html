@@ -11,12 +11,13 @@
             text-align: center;
         }
         .container {
-            width: 80%;
+            width: 90%;
             margin: 20px auto;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
         }
         table {
             width: 100%;
@@ -27,6 +28,7 @@
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
+            white-space: nowrap;
         }
         th {
             background-color: #007BFF;
@@ -50,6 +52,17 @@
                     <th>盗塁</th>
                     <th>打点</th>
                     <th>得点</th>
+                    <th>犠打</th>
+                    <th>本塁打</th>
+                    <th>三振</th>
+                    <th>打率</th>
+                    <th>出塁率</th>
+                    <th>長打率</th>
+                    <th>OPS</th>
+                    <th>失策</th>
+                    <th>刺殺</th>
+                    <th>補殺</th>
+                    <th>守備率</th>
                 </tr>
             </thead>
             <tbody id="stats-table">
@@ -75,6 +88,17 @@
                         <td>${player.盗塁}</td>
                         <td>${player.打点}</td>
                         <td>${player.得点}</td>
+                        <td>${player.犠打}</td>
+                        <td>${player.本塁打}</td>
+                        <td>${player.三振}</td>
+                        <td>${player.打率.toFixed(3)}</td>
+                        <td>${player.出塁率.toFixed(3)}</td>
+                        <td>${player.長打率.toFixed(3)}</td>
+                        <td>${player.OPS.toFixed(3)}</td>
+                        <td>${player.失策}</td>
+                        <td>${player.刺殺}</td>
+                        <td>${player.補殺}</td>
+                        <td>${player.守備率.toFixed(2)}</td>
                     </tr>`;
                     tableBody.innerHTML += row;
                 });
@@ -83,4 +107,3 @@
     </script>
 </body>
 </html>
-
